@@ -1,0 +1,255 @@
+
+.wrap {
+    //数据展示
+    .showData {
+
+        .dataCard {
+            .square_green {
+                background-color: #daf3e9;
+            }
+            .square_blue {
+                background-color: #e9f9f9;
+            }
+            .square_red {
+                background-color: #fee5e6;
+            }
+            .pic_green {
+                background-color: #34bc84;
+            }
+            .pic_blue   {
+                background-color: #87dcdf;
+            }
+            .pic_red {
+                background-color: #f97172;
+            }
+            .font_green {
+                color: #34bc84;
+            }
+            .font_blue {
+                color: #87dcdf;
+            }
+            .font_red {
+                color: #f97172;
+            }
+            .square {
+                //width:30%;
+                display: inline-block;
+                //margin: 0 10px;
+                p {
+                    font-size: 14px;
+                    color: #c0c0c0;
+                }
+            }
+            .square_wrap {
+                width: 30%;
+                display: inline-block;
+                .icon_square {
+                    width: 54px;
+                    height: 54px;
+                    border-radius: 50%;
+                    //background-color: #daf3e9;
+                    text-align: center;
+                    margin-left: 20px;
+                    p {
+                        font-size: 12px;
+                        //color: #34bc84;
+                    }
+                    .iconP {
+                        padding-top: 10px;
+                    }
+                }
+            }
+
+
+
+            .data_square {
+                width:30%;
+                vertical-align: sub;
+                b {
+                    font-size: 24px;
+                    color: #545655;
+                }
+            }
+            .pic_square {
+                width: 30%;
+                .pic_line {
+                    display: inline-block;
+                    margin: 0 2px;
+                    width: 4px;
+                    height: 20px;
+                    vertical-align: bottom;
+                    &:nth-last-of-type(0) {
+                        height: 20px;
+                    }
+                    &:nth-last-of-type(1) {
+                        height: 50px;
+                    }
+                    &:nth-last-of-type(2) {
+                        height: 60px;
+                    }
+                    &:nth-last-of-type(3) {
+                        height: 20px;
+                    }
+                    &:nth-last-of-type(4) {
+                        height: 50px;
+                    }
+                    &:nth-last-of-type(5) {
+                        height: 30px;
+                    }
+                    &:nth-last-of-type(6) {
+                        height: 60px;
+                    }
+                    &:nth-last-of-type(7) {
+                        height: 50px;
+                    }
+                    &:nth-last-of-type(odd) {
+                        background-color: #eef4f1;
+                    }
+                }
+            }
+        }
+    }
+
+    .lineChart {
+        .box-card {
+            .el-card__body {
+                .item {
+                        border-bottom: 0 none !important;
+                }
+            }
+        }
+    }
+
+    .topRank {
+        .el-col {
+            padding: 20px;
+        }
+
+        .box-card {
+            //卡片头
+            .el-card__header {
+                height: 60px;
+                border: 0 none;
+                .card-header {
+                    span {
+                        font-size: 16px ;
+                        color: #38394f;
+                    }
+                    //详情按钮
+                    .el-button--text {
+                        float: right;
+                        padding: 0;
+                        span {
+                            color: #c0c0c0;
+                        }
+                    }
+                    //单选框部分
+                    .el-radio-group {
+                        float: right;
+                        padding-right: 20px;
+                        .el-radio-button--small {
+                            //作用样式的span标签
+                            .el-radio-button__inner {
+                                border: 1px solid #fff;
+                                border-radius: 0;
+                                box-shadow: none;
+                                padding: 0 15px 10px 15px;
+                                color: #c0c0c0;
+                            }
+                            //span激活时的样式
+                            .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+                                background-color: #fff;
+                                border-bottom: 1px solid #34bc84;
+                                color: #34bc84;
+                            }
+                        }
+                    }
+                }
+            }
+            //卡片体
+            .el-card__body {
+                padding: 0 20px 20px 20px;
+
+                .item {
+                    padding: 10px 0;
+                    border-top: 1px solid #c0c0c0;
+                    &:nth-last-of-type(1){
+                        border-bottom: 1px solid #c0c0c0;
+                    }
+                    p {
+                        span {
+                            display: inline-block;
+                        }
+                        .itemName {
+                            width: 75%;
+                            font-size: 18px;
+
+                        }
+                        .itemPrice {
+                            width: 8%;
+                            text-align: right;
+                        }
+                        .itemNum {
+                            width: 15%;
+                            text-align: right;
+
+                        }
+                    }
+                }
+            }
+
+            .item {
+                span {
+                    display: inline-block;
+
+                }
+            }
+        }
+    }
+
+    .map {
+        .downloadData {
+            cursor: pointer;
+            display: inline-block;
+            padding: 5px;
+            float: right;
+            border: 1px solid #c0c0c0;
+            border-radius: 3px;
+            color: #aeaeae;
+            &:hover {
+                border-color: #34bc84;
+                background-color: #daf3e9;
+                color: #34bc84 !important;
+
+            }
+        }
+        .mapData {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+            //height: 520px;
+            //overflow-y: scroll;
+            .mapData__wrap {
+                max-height: 540px !important;
+            }
+        }
+    }
+}
+
+//popover样式控制
+.pover_content {
+    text-align: center;
+    .poverTitle {
+        display: inline-block;
+        width: 25%;
+        text-align: left;
+        color: #c0c0c0;
+    }
+    .poverData {
+        display: inline-block;
+        width: 30%;
+        text-align: center;
+        color: #c0c0c0;
+
+    }
+}

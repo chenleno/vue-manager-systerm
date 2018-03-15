@@ -1,0 +1,35 @@
+.sidebar{
+    display: block;
+    position: absolute;
+    width: 150px;
+    left: 0;
+    top: 70px;
+    bottom:0;
+    background: #2E363F;
+    z-index: 12;
+    .iconfont{
+        font-size: 20px;
+    }
+}
+.sidebar > ul {
+    height:100%;
+    border: 0;
+    .el-menu-item{
+        min-width: 20px;
+    }
+    .is-active{
+        color: #34bc84;
+    }
+    .el-menu-item{
+        &:hover {
+            background-color: #daf3e9;
+            border-left: 3px solid #34bc84;
+
+        }
+    }
+    .el-submenu__title:hover {
+        background-color: #daf3e9 ;
+        border-left: 3px solid #34bc84;
+    }
+}
+

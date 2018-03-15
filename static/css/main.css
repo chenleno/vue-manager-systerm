@@ -1,0 +1,210 @@
+*{margin:0;padding:0;}
+html,body,#app,.wrapper{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+body{
+    font-family:"Helvetica Neue",Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+a{text-decoration: none}
+.content{
+    background: none repeat scroll 0 0 #eef4f1;
+    position: absolute;
+    left: 150px;
+    right: 0;
+    top: 70px;
+    bottom:0;
+    width: auto;
+    padding:40px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+.crumbs{
+    margin-bottom: 20px;
+}
+.pagination{
+    margin: 20px 0;
+    text-align: right;
+}
+.plugins-tips{
+    padding:20px 10px;
+    margin-bottom: 20px;
+}
+.el-button+.el-tooltip {
+    margin-left: 10px;
+}
+
+/*.content .el-table tr:hover{*/
+    /*background-color: #daf3e9;*/
+/*}*/
+.content .el-table--enable-row-hover .el-table__body tr:hover>td{
+    background-color: #daf3e9;
+}
+.mgb20{
+    margin-bottom: 20px;
+}
+
+.move-enter-active,.move-leave-active{
+    transition: opacity .5s;
+}
+.move-enter,.move-leave{
+    opacity: 0;
+}
+/*BaseForm*/
+.form-box{
+    width:600px;
+}
+.form-box .line{
+    text-align: center;
+}
+.el-time-panel__content::after, .el-time-panel__content::before {
+    margin-top: -7px;
+}
+/*Readme*/
+.ms-doc .el-checkbox__input.is-disabled+.el-checkbox__label{
+    color: #333;
+    cursor: pointer;
+}
+/*Upload*/
+.pure-button{
+    width:150px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+}
+.g-core-image-corp-container .info-aside{
+    height:45px;
+}
+.el-upload--text {
+    background-color: #fff;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 360px;
+    height: 180px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.el-upload--text .el-icon-upload {
+    font-size: 67px;
+    color: #97a8be;
+    margin: 40px 0 16px;
+    line-height: 50px;
+}
+.el-upload--text {
+    color: #97a8be;
+    font-size: 14px;
+    text-align: center;
+}
+.el-upload--text em {
+    font-style: normal;
+}
+/*VueEditor*/
+.ql-container{
+    min-height: 400px;
+}
+.ql-snow .ql-tooltip{
+    transform: translateX(117.5px) translateY(10px) !important;
+}
+.editor-btn{
+    margin-top: 20px;
+}
+
+/*新增公共样式修改*/
+.content .el-table__body tr.hover-row>td{
+    background-color: #daf3e9;
+}
+.shadow{
+    box-shadow: 0px 5px 18px 0px rgba(119, 97, 71, 0.21);
+}
+
+.content .el-pager li:hover {
+    color: #34bc84;
+}
+.content .el-pager li.active {
+    color: #34bc84;
+    cursor: default;
+}
+
+/*select样式*/
+.el-popper .el-select-dropdown__item{
+    font-size: 12px;
+}
+.el-popper .el-select-dropdown__item.selected , .el-cascader-menu__item.is-active {
+    color: #34bc84 !important;
+}
+.el-popper .el-select-dropdown__item.hover, .el-select-dropdown__item:hover,.el-cascader-menu__item:focus:not(:active), .el-cascader-menu__item:hover {
+    background-color: #daf3e9 !important;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/*重写按钮样式*/
+.content .el-button--primary.is-plain{
+    color: #34bc84;
+    background: #daf3e9;
+    border-color: #34bc84;
+}
+.content .el-button--primary.is-plain:focus,.content .el-button--primary.is-plain:hover{
+    color: #fff;
+    background: #34bc84;
+    border-color: #34bc84;
+}
+/*重写分页样式*/
+.content.el-pagination.is-background .btn-next, .content.el-pagination.is-background .btn-prev,.content .el-pagination.is-background .el-pager li{
+    background-color: #fff;
+}
+.content .el-pagination.is-background .el-pager li.active{
+    background-color: #34bc84;
+}
+.content .el-pagination.is-background .el-pager li.active:hover{
+    color: #fff;
+}
+.content .el-pagination.is-background .el-pager li:hover{
+    color: #34bc84;
+}
+/*重写时间插件的样式*/
+body .el-date-table td.end-date span,body .el-date-table td.start-date span {
+  background-color: #34bc84;
+}
+body .el-date-table td.today span{
+    color: #34bc84;
+}
+body .el-date-table td.available:hover {
+    color: #34bc84;
+}
+
+.mainFirst .el-tag .el-icon-close {
+    color: #aeaeae;
+    font-size: 16px;
+    
+}
+.mainFirst .el-tag .el-icon-close:hover {
+    color: #fff;
+    font-size: 12px;
+    background: #34bc84;
+}
+.content .is-active {
+    color: #34bc84!important;
+}
+
+.content .el-tabs__item:hover{
+    color: #34bc84!important;
+}
+.el-tabs__item {
+    color: #aeaeae!important;
+}
+.content .el-tabs__active-bar {
+    background-color: #34bc84;
+}
+.el-tabs__item:focus.is-active.is-focus:not(:active) {
+    box-shadow: 0 0 0 0 #fff!important;
+}
