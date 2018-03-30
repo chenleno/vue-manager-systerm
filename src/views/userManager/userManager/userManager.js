@@ -29,7 +29,7 @@ export default {
             }],
             inputTypeValue:'',
             inputDate:'',
-            inputAddress:'',
+            district:'',
             cityOptions: cityJson.data,
             registerValue: '1',
             inputId: '',
@@ -40,22 +40,22 @@ export default {
                 value:'泛用户',
                 label:'泛用户'
             },{
-                value:'会员(贩售机)',
-                label:'会员(贩售机)'
+                value:'会员',
+                label:'会员'
             },{
-                value:'会员(魔镜)',
-                label:'会员(魔镜)'
+                value:'普通用户',
+                label:'普通用户'
             }],
             userTypeValue:'',
             selectedOptionCity:[],
             //年龄
-            userAge:[],
+            userAge:[{value:'',label:'全部'}],
             age1:'',
             age2:'',
             //分页相关
             cur_page: 1,
             pageSize: 20,
-            total:1000,
+            total:1,
             //请求体内容
             postParams : {
             }
@@ -74,6 +74,7 @@ export default {
             // province : '',//   所在省份
             // city    : '',//   所在城市
             // area   :''//     所在区
+            //district:所在地址
         }
     },
     mounted(){
@@ -105,18 +106,24 @@ export default {
             //判断地区
             if( this.selectedOptionCity.length > 1){
                 params.province = this.selectedOptionCity[0];
-                params.city = this.selectedOptionCity[0];
-                params.area = this.selectedOptionCity[0];
+                params.city = this.selectedOptionCity[1];
+                params.area = this.selectedOptionCity[2];
+            }
+            if( this.district != ''){
+                params.addressDetails = this.district
             }
 
             //判断时间  formatDate
-            if(this.inputDate.length > 1){
-                let data = this.inputDate
-                let time1 = service.formatDate(data[0]) + ' ' + '00:00:00';
-                let time2 = service.formatDate(data[1]) + ' ' + '00:00:00';
-                params.logonStart = time1
-                params.logonEndding  = time2
+            if(this.inputDate){
+                if(this.inputDate.length > 1){
+                    let data = this.inputDate
+                    let time1 = service.formatDate(data[0]) + ' ' + '00:00:00';
+                    let time2 = service.formatDate(data[1]) + ' ' + '00:00:00';
+                    params.logonStart = time1
+                    params.logonEndding  = time2
+                }
             }
+
             //判断年龄
             if(this.age1 != ''){
                 params.ageStart = this.age1
@@ -164,6 +171,7 @@ export default {
             })
             .then( res => {
                 self.tableData = res.data.data
+                self.total = res.data.total
             })
         },
         handleCurrentChange(val){
@@ -200,7 +208,7 @@ export default {
         //初始化年龄的options
         ageOptions:function () {
             let i = 10;
-            for(;i < 70; i++){
+            for(;i < 80; i++){
                 this.userAge.push({
                     value:i,
                     label:i

@@ -7,7 +7,7 @@ module.exports = {
 
         res.send(
             {
-                "success": '200',
+                "code": '200',
                 "message": "code is ok",
                 "data": {
                     "todayData": {

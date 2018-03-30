@@ -10,12 +10,19 @@ import aBar from 'components/dashboard/barChart/barChart.vue'
 //引入地图组件
 import aMap from 'components/dashboard/map/map.vue'
 
+//引入api
+import * as csApi from '../../api/dashboard'
 
-import host from 'tools/service/commonService.js'
-
+let myMixins = {
+    data : function(){
+        return {csApi}
+    }
+}
 
 
 export default {
+
+    mixins : [myMixins],        //组件混入
 
     components : {
         aBar,
@@ -25,15 +32,31 @@ export default {
     },
 
     data : () => ({
+
         //数据展示
         dataObj : {
-            allData : {},
-            todayData : {}
+            allData : {
+                "generalUser": 0,
+                "orderTotalAmount": 0,
+                "vipUser": 0,
+                "orderCount": 0,
+                "normalUser": 0,
+                "device": 0
+            },
+
+            todayData : {
+                "generalUser": 0,
+                "orderTotalAmount": 0,
+                "vipUser": 0,
+                "orderCount": 0,
+                "normalUser": 0,
+                "device": 0
+            }
         },
         //折线图相关配置
         lineObj : {
             userLineApi : '/api/udcp-base/user/userLineData',            //用户折线图api
-            billingLineApi : '/api/kdxc-udcp-base/goods/orderLineData',      //订单折线图api
+            billingLineApi : '/api/udcp-base/goods/orderLineData',      //订单折线图api
 
             userLineDate : 'day',                          //用户折线图时段筛选
             billingLineDate : 'day',                       //订单折线图时段筛选
@@ -114,68 +137,117 @@ export default {
         //地图
         mapObj : {
             mapData : []
-        }
-    }),
+        },
+        //excel下载路径
+        downloadUrl : '/api/udcp-base/user/distribution/excel/xlsx',
 
+        dataWidth : ''
+
+    }),
     created(){
         this.getBaseData()
         this.getVEMdata('day')
         this.getShopData('day')
         this.getTopVEM('day')
         this.getMapData()
+
+    },
+    mounted(){
+        this.dataWidth = this.getWidth()
+        const self = this                                           //此处必须定义一个变量接受this，否则下文的数据绑定会出错
+        window.onresize = function temp() {                         //监听窗口变化
+            self.dataWidth = self.getWidth()                        //此处如果继续使用this，此this会指向window，而不是vue实例
+        };
     },
     computed : {
+        //获取新增用户数量
         getTodayUser : function(){
             return this.dataObj.todayData.generalUser + this.dataObj.todayData.normalUser + this.dataObj.todayData.vipUser
         },
+        //获取总用户数量
         getAllUser : function(){
             return this.dataObj.allData.generalUser + this.dataObj.allData.normalUser + this.dataObj.allData.vipUser
-        },
-        downloadUrl : function(){
-            return host.hostUrl + '/api/udcp-base/user/distribution/excel/xlsx'
         }
     },
 
     methods :  {
-
+        //获取宽度
+        getWidth (){
+            var dom = document.getElementsByClassName('dataCard')[0]
+            var width = window.getComputedStyle(dom).width
+            var str = width.substring(0,width.length-2)
+            str = parseInt(str) + 17
+            return str.toString()
+        },
         //获取数据
         getBaseData (){
-            this.$axios.get('/api/udcp-base/base').then(res => {
-                if (res.data.success == '200') {
-                    this.dataObj.allData = res.data.data.allData
-                    this.dataObj.todayData = res.data.data.todayData
+            let self = this
+
+            csApi.getBaseData.r().then(res => {
+                if (res.data.code == '200') {
+                    self.dataObj.allData = res.data.data.allData
+                    self.dataObj.todayData = res.data.data.todayData
                 } else {
 
                 }
             }).catch(error => {
                 console.log(error)
             })
+
+
+
+            //self.$axios.get('/api/udcp-base/base').then(res => {
+            //
+            //    if (res.data.code == '200') {
+            //        self.dataObj.allData = res.data.data.allData
+            //        self.dataObj.todayData = res.data.data.todayData
+            //    } else {
+            //
+            //    }
+            //}).catch(error => {
+            //    console.log(error)
+            //})
         },
-        //rank获取VEM
+        //获取畅销商品top10
         getVEMdata (date){
-            this.$axios.get('/api/kdxc-udcp-base/goods/top10/everyTerminal',{
-                params : {
-                    timeSlice : date
-                }
-            }).then(res => {
-                if (res.data.success == '200') {
-                    this.rankObj.VEMData = res.data.data
+            let self = this
+
+            csApi.getTopData.r('offline',{timeSlice:date}).then(res => {
+                if (res.data.code == '200') {
+                    self.dataObj.allData = res.data.data.allData
+                    self.dataObj.todayData = res.data.data.todayData
                 } else {
 
                 }
             }).catch(error => {
                 console.log(error)
             })
+
+
+            //self.$axios.get('/api/udcp-base/goods/top10/offline',{
+            //    params : {
+            //        timeSlice : date
+            //    }
+            //}).then(res => {
+            //    if (res.data.code == '200') {
+            //        self.rankObj.VEMData = res.data.data
+            //    } else {
+            //
+            //    }
+            //}).catch(error => {
+            //    console.log(error)
+            //})
         },
-        //rank获取shop
+        //获取微商城商品top10
         getShopData (date){
-            this.$axios.get('/api/kdxc-udcp-base/goods/top10/wechat',{
+            let self = this
+            self.$axios.get('/api/udcp-base/goods/top10/wechat',{
                 params: {
                     timeSlice : date
                 }
             }).then(res => {
-                if (res.data.success == '200') {
-                    this.rankObj.shopData = res.data.data
+                if (res.data.code == '200') {
+                    self.rankObj.shopData = res.data.data
                 } else {
 
                 }
@@ -183,15 +255,16 @@ export default {
                 console.log(error)
             })
         },
-        //rank获取topVEM
+        //获取终端top10
         getTopVEM (date){
-            this.$axios.get('/api/kdxc-udcp-base/goods/top10/offline',{
+            let self = this
+            self.$axios.get('/api/udcp-base/goods/top10/everyTerminal',{
                 params : {
                     timeSlice : date
                 }
             }).then(res => {
-                if (res.data.success == '200') {
-                    this.rankObj.topVEM = res.data.data
+                if (res.data.code == '200') {
+                    self.rankObj.topVEM = res.data.data
                 } else {
 
                 }
@@ -201,9 +274,10 @@ export default {
         },
         //获取地图信息
         getMapData (){
-            this.$axios.get('/api/udcp-base/user/distribution').then(res => {
-                if (res.data.success == '200') {
-                    this.mapObj.mapData = res.data.data
+            let self = this
+            self.$axios.get('/api/udcp-base/user/distribution').then(res => {
+                if (res.data.code == '200') {
+                    self.mapObj.mapData = res.data.data
                 } else {
 
                 }
@@ -211,7 +285,6 @@ export default {
                 console.log(error)
             })
         }
-
     }
 
 

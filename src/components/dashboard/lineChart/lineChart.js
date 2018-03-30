@@ -77,9 +77,9 @@ export default {
             const self = this
 
             // 基于准备好的dom，初始化echarts实例
-            this.myChart = self.$echarts.init(document.getElementById(this.id))
+            self.myChart = self.$echarts.init(document.getElementById(this.id))
             // 绘制图表
-            this.myChart.setOption({
+            self.myChart.setOption({
                 tooltip: {
                     trigger: 'axis'
                 },
@@ -109,22 +109,25 @@ export default {
                     type: 'value'
                 },
                 series:data
+
             });
-            window.addEventListener('resize' , this.myChart.resize)  //图表响应式重绘
+            window.addEventListener('resize' , self.myChart.resize)  //图表响应式重绘
         },
         getData ( val ){
-            this.$axios.get(this.api,{
+            let self = this
+
+            self.$axios.get(this.api,{
                 params: {
                     timeSlice : val
                 }
             }).then(res => {
-                if (res.data.success == '200') {
-                    this.Xdate = res.data.data.date
-                    this.lineData = res.data.data.lineData
+                if (res.data.code == '200') {
+                    self.Xdate = res.data.data.date
+                    self.lineData = res.data.data.lineData
 
-                    var finalData = this.dataToEcharts(this.lineData , this.colorarray)
+                    let finalData = self.dataToEcharts(this.lineData , this.colorarray)
 
-                    this.drawLine(finalData , this.Xdate)  //对this.lineData作对应的echarts处理
+                    self.drawLine(finalData , this.Xdate)  //对this.lineData作对应的echarts处理
                 } else {
 
                 }

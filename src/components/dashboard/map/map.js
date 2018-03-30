@@ -10,6 +10,7 @@ export default {
     data () {
         return {
             myChart:'',
+            maxRange : 0
         }
     },
     created(){
@@ -88,7 +89,7 @@ export default {
                 tooltip: {},
                 visualMap: {
                     min: 0,
-                    max: 1500,
+                    max: this.getMax(this.mapData),                 //以当前数据的最大value值为maxRange
                     left: 'left',
                     top: 'bottom',
                     text: ['高','低'],
@@ -130,9 +131,9 @@ export default {
                         geoIndex: 0,
                         tooltip: {
                             trigger : 'item',
-                            formatter : function(params){
-                                var res = params.name+'<br/>' + '会员数量：' + params.value + '<br/>' + '占比：' + params.value
-
+                            formatter :
+                                function(params){
+                                var res = params.name+'<br/>' + '会员数量：' + params.data.value + '<br/>' + '占比：' + params.data.percent
                                 return res;
                             }
                         },
@@ -158,8 +159,8 @@ export default {
             window.addEventListener('resize' , this.myChart.resize)  //图表响应式重绘
         },
         getData (){
-            this.$axios.get('/api/mapData').then(res => {
-                if (res.data.success == '200') {
+            this.$axios.get('/api/udcp-base/user/distribution').then(res => {
+                if (res.data.code == '200') {
                     this.mapData = res.data.data
 
                     this.drawMap(this.mapData)
@@ -169,8 +170,15 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+        //获取数组最大值
+        getMax (obj) {
+            let valueArr = []
+            obj.forEach(item => {
+                valueArr.push(item.value)
+            })
+            return Math.max.apply( Math, valueArr );
         }
-
     }
 
 

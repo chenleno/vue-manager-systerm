@@ -10,7 +10,10 @@ module.exports = {
     api: '/hello',
     response: function (req, res) {
         res.send(
-            {"success":true,"message":"code is ok","data":{"userName":"王大锤","userId":"dweq313123"}}
+            {"code":'200',"message":"code is ok","data":{
+                "userName":"王大锤",
+                "userId":"dweq313123"
+                }}
         )
     }
 }

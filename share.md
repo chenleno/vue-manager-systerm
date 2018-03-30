@@ -142,9 +142,32 @@
 - 封装组件配合<template slot-scope='' >标签完成标签插入，便于添加事件
 
 - build后打包文件 vender.js体积过大
-    + 
+    + 启用GZIP压缩，后续考虑分包
+
+- 获取不到组件渲染后的dom元素的style样式
+```javascript
+var dom = document.getElementsByClassName('dataCard')[0]
+var width = window.getComputedStyle(dom).width                      //getComputedStyle
+```
+- vue监听窗口变化
+```javascript
+mounted(){                                              //在mounted中挂载window.onresize监听函数
+        this.dataWidth = this.getWidth()                
+        const self = this                               //此处必须定义一个变量接受this，否则下文的数据绑定会出错
+        window.onresize = function temp() {
+            self.dataWidth = self.getWidth()            //此处如果继续使用this，此this会指向window，而不是vue实例
+        };
+    },
+```
+
+
 
 ## 问题
 - 在配置代理域名时，如果配置本地服务器域名（如：iot.kdxcloud.com)，请求可以直接获取到response信息
   
   如果配置的是线上域名（如：letlink.kdxcloud.com:88），请求获取的response为 notlogin
+
+## js相关
+
+### 栈内存中存放的是基本数据类型值，堆内存中存放的是引用类型值，引用类型值在内存中的地址存放在栈中，也就是我们常说的对象对象引用(指针)。 
+### 在变量复制方面，基本类型和引用类型也有所不同，基本类型复制的是值本身，而引用类型复制的是内存地址。

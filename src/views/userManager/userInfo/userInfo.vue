@@ -35,7 +35,7 @@
             <div class="tag">
                 <div class="tagTitle">
                     <span style="font-size:14px;color:#545655;">用户标签</span>
-                    <el-button style="float: right;color:#aeaeae;font-size:14px;" type="" @click="addTabs">添加标签</el-button>
+                    <el-button style="float: right;color:#aeaeae;font-size:14px;" type="" @click="addTabs"><i class="el-icon-circle-plus-outline" style="font-size:16px;"></i>&nbsp;&nbsp; 添加标签</el-button>
                 </div>
                 <el-tag
                     v-for="tag in tags"
@@ -79,7 +79,7 @@
                     <el-table-column
                         prop="createTime"
                         label="订单时间"
-                        width="">
+                        width="200">
                     </el-table-column>
                     <el-table-column
                         prop="orderType"
@@ -97,7 +97,7 @@
                     <el-table-column
                         label="商品名称">
                         <template slot-scope="scope">
-                            <span v-for="goods in scope.row.orderDetail">{{goods.name}} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span v-for="goods in scope.row.orderDetail">{{goods.goodsName}} &nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -116,6 +116,7 @@
                         label="取货设备编号">
                     </el-table-column>
                     <el-table-column
+                        width="250"
                         prop="detailAddress"
                         label="设备地址">
                         <template slot-scope="scope">
@@ -126,10 +127,10 @@
                 <div class="pagination">
                     <el-pagination
                         background
-                        @current-change="handleCurrentChange"
-                        :page-size="10"
+                        @current-change="consumeHandleCurrentChange"
+                        :page-size="20"
                         layout="total, prev, pager, next"
-                        :total="1000">
+                        :total="consumeTotalCount">
                     </el-pagination>
                 </div>
             </div>
@@ -144,7 +145,7 @@
                     <el-table-column
                         prop="loginTime"
                         label="登录时间"
-                        width="">
+                        width="200">
                     </el-table-column>
                     <el-table-column
                         prop="loginSource"
@@ -172,23 +173,23 @@
                 <div class="pagination">
                     <el-pagination
                         background
-                        @current-change="handleCurrentChange"
-                        :page-size="10"
+                        @current-change="loginHandleCurrentChange"
+                        :page-size="20"
                         layout="total, prev, pager, next"
-                        :total="1000">
+                        :total="loginTotalCount">
                     </el-pagination>
                 </div>
             </div>
 
         </el-tab-pane>
         <el-tab-pane :label="'人脸识别记录('+faceList.length+')'" name="fourth">
-        <div class="mainFirst">
+        <div class="mainFirst tableInfo">
             <div class="userInfo" style="padding: 0 0 15px 0">
                 <h3 class="title">认证照片</h3>
             </div>
-            <div style="overflow:hidden;">
+            <div style="overflow:hidden;border-bottom: 2px solid #eee;">
             <img class="pre-img" :src="facePicPath" alt="">
-            <span class="superNumber">特征值：DDDSSSEEDFDDDS</span>
+            <span class="superNumber">特征值：{{featureValue}}</span>
             </div>
             <div class="userInfo" style="padding:15px 0">
                 <h3 class="title">登录记录</h3>
@@ -199,7 +200,7 @@
                 <el-table-column
                 prop="faceRecTime"
                 label="识别时间"
-                width="">
+                width="200">
                 </el-table-column>
                 <el-table-column
                 prop="deviceId"
@@ -221,6 +222,15 @@
                     </template>
                 </el-table-column>
             </el-table>
+            <div class="pagination">
+                    <el-pagination
+                        background
+                        @current-change="faceHandleCurrentChange"
+                        :page-size="20"
+                        layout="total, prev, pager, next"
+                        :total="faceTotalCount">
+                    </el-pagination>
+                </div>
         </div>
         </el-tab-pane>
     </el-tabs>

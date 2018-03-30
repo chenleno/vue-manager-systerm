@@ -100,13 +100,15 @@ export default {
             window.addEventListener('resize' , this.myChart.resize)  //图表响应式重绘
         },
         getData (){
-            this.$axios.get(this.api).then(res => {
-                if (res.data.success) {
-                    this.barData = res.data.data
+            let self = this
 
-                    var obj = this.dataToEcharts(this.barData)
+            self.$axios.get(this.api).then(res => {
+                if (res.data.code == '200') {
+                    self.barData = res.data.data
 
-                    this.drawLine(obj.xAxisArr , obj.yDataArr)
+                    var obj = self.dataToEcharts(this.barData)
+
+                    self.drawLine(obj.xAxisArr , obj.yDataArr)
                 } else {
 
                 }

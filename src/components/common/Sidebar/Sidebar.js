@@ -19,31 +19,9 @@ export default {
                     ]
 
                 },
-                //{
-                //    icon: 'el-icon-menu',
-                //    index: '2',
-                //    title: '表格',
-                //    subs: [
-                //        {
-                //            index: '3',
-                //            title: '表格类型',
-                //            subs : [
-                //                {
-                //                    index:'basetable',
-                //                    title : '基础表格'
-                //                }
-                //
-                //            ]
-                //        },
-                //        {
-                //            index: 'vuetable',
-                //            title: 'Vue表格组件'
-                //        }
-                //    ]
-                //},
                 {
                     icon: 'iconfont icon-yonghuguanli',
-                    index: 'userManager',
+                    index: '2',
                     title: '用户管理',
                     subs: [
                         {
@@ -106,7 +84,6 @@ export default {
     computed:{
         onRoutes(){
             return this.$route.path.replace('/','');
-
         }
     }
 }

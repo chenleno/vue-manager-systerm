@@ -37,6 +37,7 @@ export default {
                     }else {
                         self.clearCookie()
                     }
+
                     self.$store.commit('ms_username','hello')
                     self.$router.push('/home');
 
@@ -49,6 +50,7 @@ export default {
                     //        alert('error login')
                     //    }
                     //})
+
                 } else {
                     console.log('error submit!!');
                     return false;

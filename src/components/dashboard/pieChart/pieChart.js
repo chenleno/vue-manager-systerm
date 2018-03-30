@@ -130,14 +130,23 @@ export default {
         },
         getData (){
             this.$axios.get(this.api).then(res=>{
-                if (res.data.success == '200') {
+                if (res.data.code == '200') {
                     this.myData = res.data.data
 
-                    this.drawLine( this.myData )
+                    this.drawLine( this.dataFilter(this.myData) )
                 } else {
 
                 }
             })
+        },
+        //去除饼图数据中的0%
+        dataFilter (arr){
+            arr.forEach((item , index) => {
+                if(item.value === 0) {
+                    arr.splice(index , 1)
+                }
+            })
+            return arr
         }
     }
 }

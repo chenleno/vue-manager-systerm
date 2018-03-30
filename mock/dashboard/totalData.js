@@ -6,7 +6,7 @@ module.exports = {
     response: function (req, res) {
 
         res.send(
-            {"success":true,
+            {"code":"200",
                 "message":"code is ok",
                 "data":[
                     {"dataName":"全部泛用户","dataNum":"567"},

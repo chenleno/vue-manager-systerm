@@ -2,7 +2,7 @@
  * Created by chenqi1 on 2018/3/6.
  */
 module.exports = {
-    api: '/api/mapData',
+    api: '/api/udcp-base/user/distribution',
     response: function (req, res) {
 
         function randomValue() {
@@ -10,7 +10,7 @@ module.exports = {
         }
 
         res.send(
-            {"success":'200',
+            {"code":'200',
                 "message":"code is ok",
                 "data":[
                     {name: '北京', value:250 , percent:'10%'},

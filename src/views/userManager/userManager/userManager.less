@@ -20,7 +20,7 @@
     }
     .tableInfo{
         clear: both;
-        margin-top: 30px;
+        margin-top: 20px;
         padding-bottom: 0.1px;
         width: 100%;
         background: #fff;
@@ -33,52 +33,80 @@
             }
         }
     }
-    //选择框
-    .selectType{
-        width: 70px;
-        .el-input__inner{
-            border: none;
-            background-color: #eef4f1;
-            color: #aeaeaf;
-            padding: 0;
-        }
-        .el-input{
-            font-size: 12px;
-        }
+    //用户ID选择框
+    .selectTypeDiv{
+        width: 216px;
+        height: 30px;
+        border: 1px solid #dadfdc;
+        border-radius: 3px;
+        .selectType{
+            width: 95px;
+            height: 30px;
+            //margin-left: 10px;
+            .el-input__inner{
+                text-indent: 10px;
+                border: none;
+                background-color: #eef4f1;
+                color: #818785;
+                padding: 0;
+                height: 30px;
+            }
+            .el-input{
+                font-size: 12px;
+            }
 
+        }
+        .inputType{
+            width: 116px;
+            border: none;
+            input{
+                border: none;
+            }
+            .el-input__inner{
+                padding: 0;
+            }
+        }
     }
-    .inputType{
-        width: 218px;
-    }
+
+
     .el-input__inner{
         border-radius: 2px;
-    }
-    label{
-        color: #aeaeaf;
-        font-size: 12px;
-        margin-right: 10px;
-    }
-    .demonstration{
-        color: #aeaeaf;
-        font-size: 12px;
-        margin-right: 10px;
-    }
-    .el-input__inner{
         background-color: #eef4f1;
     }
-    .color{
-        color: #aeaeaf;
+    label{
+        color: #818785;
         font-size: 12px;
+        margin-right: 10px;
     }
+    //地址选择框
+    .demonstrationDiv{
+        width: 366px;
+        height: 30px;
+        border: 1px solid #dadfdc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        .el-input__inner{
+            border: 0px;
+            height: 30px;
+            width: 180px;
+        }
+        .el-input__icon{
+            line-height: 30px;
+        }
+        .el-cascader{
+            line-height: 30px;
+        }
+    }
+
     .mr30{
-        margin-right: 30px;
+        margin-right: 10px;
     }
     //时间插件
     .el-range-input{
         background: #eef4f1;
     }
     .el-date-editor .el-range-separator{
-        color: #aeaeaf;
+        color: #818785;
     }
     .fl{
         margin-bottom: 15px;
@@ -86,7 +114,88 @@
     //搜索按钮
     .btn{
         float: right;
-        width: 85px;
+        width: 70px;
+        height: 30px;
+        padding: 0;
+        margin-left: 10px;
+    }
+
+    //搜索筛选框第二行
+    .secendDiv{
+        width: 100%;
+        clear: both;
+        overflow: hidden;
+        .el-input__inner{
+            height: 30px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .el-range-editor.el-input__inner{
+            padding: 0 10px;
+        }
+        .el-range-input{
+            height: 24px;
+        }
+        //年龄
+        .age{
+            color: #818785;
+            font-size: 12px;
+            border: 1px solid #dadfdc;
+            padding-left: 10px;
+            border-radius: 3px;
+            width: 225px;
+            height: 30px;
+            input{
+                border: none;
+            }
+            .el-input__icon{
+                line-height: 30px;
+            }
+            .el-input__suffix{
+               .el-icon-arrow-up{
+                   &:before{
+                       content:'';
+                   }
+               }
+            }
+            .el-input__inner{
+                padding-right: 10px;
+            }
+        }
+    }
+
+    //修改箭头样式
+    .el-icon-arrow-up{
+        &:before{
+            content: "\E60C";
+        }
+    }
+    .el-icon-arrow-down{
+        color: #818785;
+        &:before{
+            content: "\E60B";
+        }
+    }
+    .el-select .el-input .el-select__caret{
+        color: #818785;
+    }
+    .el-date-editor .el-range-input, .el-date-editor .el-range-separator{
+        font-size: 12px;
+    }
+
+    //修改表格样式
+    .el-table{
+        font-size: 12px;
+    }
+    .el-table th>.cell{
+        font-weight: normal;
+        color: #818785;
+    }
+    .el-table th{
+        padding: 30px 0;
+    }
+    .el-table td{
+        padding: 24px 0;
     }
 }
 

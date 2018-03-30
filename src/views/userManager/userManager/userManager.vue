@@ -1,7 +1,25 @@
 <template>
     <div class="userManager">
         <div style="width: 100%">
-            <div class="fl mr30">
+            <div class="fr demonstrationDiv">
+                <!--<span class="demonstration">地址:</span>-->
+                <el-cascader
+                    expand-trigger="hover"
+                    :options="cityOptions"
+                    v-model="selectedOptionCity"
+                    style="width: 180px;"
+                    :clearable="true"
+                    @change="handleChange">
+                </el-cascader>
+                <el-input
+                    v-model="district"
+                    class="inputType input"
+                    clearable
+                    placeholder="请输入详细地址">
+                </el-input>
+            </div>
+
+            <div class="fr mr30 selectTypeDiv">
                 <el-select v-model="selectType"  class="selectType">
                     <el-option
                         v-for="item in selectTypeOptions"
@@ -17,86 +35,68 @@
                 </el-input>
             </div>
 
-            <div class="fl mr30">
-                <span class="demonstration">地址:</span>
-                <el-cascader
-                    expand-trigger="hover"
-                    :options="cityOptions"
-                    v-model="selectedOptionCity"
-                    style="width: 270px;margin-right: 6px"
-                    @change="handleChange">
-                </el-cascader>
-                <el-input
-                    v-model="inputAddress"
-                    class="inputType input"
-                    clearable>
-                </el-input>
+            <div class="secendDiv">
+                <el-button type="primary" plain class="btn" @click='queryData'>搜索</el-button>
+
+                <div class="fr mr30">
+                    <!--<label>注册渠道:</label>-->
+                    <el-select v-model="registerValue" style="width: 100px;height: 30px">
+                        <el-option
+                            v-for="item in registerOptions"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+
+                <div class="fr color mr30">
+                    <!--<label>用户类型</label>-->
+                    <el-select v-model="userTypeValue" placeholder="全部用户" style="width: 105px">
+                        <el-option
+                            v-for="item in userType"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+
+                <div class="fr mr30">
+                    <!--<label>注册时间:</label>-->
+                    <el-date-picker
+                        v-model="inputDate"
+                        type="daterange"
+                        range-separator="到"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期">
+                    </el-date-picker>
+                </div>
+
+                <div class="fr age mr30">
+                    <label>年龄</label>
+                    <i class="el-select__caret el-input__icon el-icon-arrow-down"></i>
+                    <el-select v-model="age1" placeholder="全部" style="width: 60px">
+                        <el-option
+                            v-for="item in userAge"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                    &nbsp;
+                    至
+                    &nbsp;
+                    <el-select v-model="age2" placeholder="全部" style="width: 60px">
+                        <el-option
+                            v-for="item in userAge"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
             </div>
-
-            <div class="fl mr30">
-                <label>注册渠道:</label>
-                <el-select v-model="registerValue" style="width: 88px">
-                    <el-option
-                        v-for="item in registerOptions"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                    </el-option>
-                </el-select>
-            </div>
-
-            <div class="fl mr30">
-                <label>注册时间:</label>
-                <el-date-picker
-                    v-model="inputDate"
-                    type="daterange"
-                    range-separator="到"
-                    start-placeholder="开始日期"
-                    end-placeholder="结束日期">
-                </el-date-picker>
-            </div>
-
-
-            <div class="fl color mr30">
-                <label>年龄</label>
-                <el-select v-model="age1" placeholder="全部" style="width: 80px">
-                    <el-option
-                        v-for="item in userAge"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                    </el-option>
-                </el-select>
-                &nbsp;
-                至
-                &nbsp;
-                <el-select v-model="age2" placeholder="全部" style="width: 80px">
-                    <el-option
-                        v-for="item in userAge"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                    </el-option>
-                </el-select>
-            </div>
-
-            <div class="fl color mr30">
-                <label>用户类型</label>
-                <el-select v-model="userTypeValue" placeholder="全部" style="width: 105px">
-                    <el-option
-                        v-for="item in userType"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                    </el-option>
-                </el-select>
-            </div>
-
-
-
-
-            <el-button type="primary" plain class="btn" @click='queryData'>搜索</el-button>
-
         </div>
         <div class="shadow tableInfo">
             <!--<el-scrollbar wrapClass="tableHeight" viewClass="tableWidth">-->
@@ -106,7 +106,7 @@
                     height="500">
                     <el-table-column
                         fixed
-                        label="用户id"
+                        label="用户ID"
                         width="180"
                     >
                         <!--@click="goInfo(123)"-->
@@ -205,7 +205,7 @@
                     <el-table-column
                         prop="address"
                         label="地址"
-                        width="180">
+                        width="400">
                     </el-table-column>
                     <el-table-column
                         prop="countOfLogin"

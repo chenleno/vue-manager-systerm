@@ -1,11 +1,16 @@
 *{margin:0;padding:0;}
+body {
+    /*overflow-y: scroll;*/
+    /*overflow-x: scroll;*/
+}
 html,body,#app,.wrapper{
     width:100%;
     height:100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 body{
     font-family:"Helvetica Neue",Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+
 }
 a{text-decoration: none}
 .content{
@@ -19,7 +24,23 @@ a{text-decoration: none}
     padding:40px;
     box-sizing: border-box;
     overflow-y: scroll;
+    min-width: 1170px;
 }
+
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 992px) {
+    .wrapper {
+        overflow-x: scroll;
+    }
+}
+@media (min-width: 768px) {
+    .wrapper {
+        overflow-x: scroll;
+    }
+}
+
 .crumbs{
     margin-bottom: 20px;
 }
@@ -38,9 +59,7 @@ a{text-decoration: none}
 /*.content .el-table tr:hover{*/
     /*background-color: #daf3e9;*/
 /*}*/
-.content .el-table--enable-row-hover .el-table__body tr:hover>td{
-    background-color: #daf3e9;
-}
+
 .mgb20{
     margin-bottom: 20px;
 }
@@ -116,8 +135,21 @@ a{text-decoration: none}
 }
 
 /*新增公共样式修改*/
+/*划过表格样式*/
 .content .el-table__body tr.hover-row>td{
-    background-color: #daf3e9;
+    background-color: #34bc84;
+    color: #fff;
+    /*box-shadow: 0px 5px 8px 0px rgba(52, 188, 132, 0.28);*/
+}
+.content .el-table--enable-row-hover .el-table__body tr:hover>td{
+    background-color: #34bc84;
+    color: #fff ;
+}
+.content .el-table--enable-row-hover .el-table__body tr:hover>td .cell{
+    color: #fff;
+}
+.content .el-table__body tr:hover{
+    border: 0;
 }
 .shadow{
     box-shadow: 0px 5px 18px 0px rgba(119, 97, 71, 0.21);
@@ -137,6 +169,7 @@ a{text-decoration: none}
 }
 .el-popper .el-select-dropdown__item.selected , .el-cascader-menu__item.is-active {
     color: #34bc84 !important;
+    /* background: rgba(52,188,132,0.3)!important; */
 }
 .el-popper .el-select-dropdown__item.hover, .el-select-dropdown__item:hover,.el-cascader-menu__item:focus:not(:active), .el-cascader-menu__item:hover {
     background-color: #daf3e9 !important;
@@ -149,7 +182,7 @@ a{text-decoration: none}
 }
 /*重写按钮样式*/
 .content .el-button--primary.is-plain{
-    color: #34bc84;
+    color: #fff;
     background: #daf3e9;
     border-color: #34bc84;
 }
@@ -185,15 +218,42 @@ body .el-date-table td.available:hover {
 .mainFirst .el-tag .el-icon-close {
     color: #aeaeae;
     font-size: 16px;
-    
+
 }
+
+.mainFirst .el-tag:hover {
+    color: #34bc84!important;
+    /* font-size: 16px; */
+    background: rgba(52,188,132,0.3) !important;
+    opacity:0.5!important;
+    filter:alpha(opacity=50);
+}
+
+.mainFirst .el-button:hover {
+    color: #fff!important;
+    background-color: #34bc84!important;
+    border-color: #34bc84!important;
+}
+
+/* .el-button .el-button--default .el-button--small {
+    background-color: #fff!important;
+} */
+
 .mainFirst .el-tag .el-icon-close:hover {
     color: #fff;
     font-size: 12px;
-    background: #34bc84;
+    background: rgba(52,188,132,1) !important;
 }
 .content .is-active {
     color: #34bc84!important;
+    background: rgba(52,188,132,0.3) !important;
+}
+
+.content .el-tabs__item {
+    border-radius: 4px;
+    background-color: #fff;
+    color: #545655;
+    margin:0 10px 0px 10px;
 }
 
 .content .el-tabs__item:hover{
@@ -202,9 +262,30 @@ body .el-date-table td.available:hover {
 .el-tabs__item {
     color: #aeaeae!important;
 }
+.el-tabs__nav-wrap::after {
+    height: 0px!important;
+}
+.el-tabs__header {
+    margin:0 0 28px!important;
+}
+.el-tabs__nav-scroll {
+    margin-top: 10px;
+}
 .content .el-tabs__active-bar {
+    opacity: 0;
     background-color: #34bc84;
 }
 .el-tabs__item:focus.is-active.is-focus:not(:active) {
     box-shadow: 0 0 0 0 #fff!important;
+}
+.el-button--primary {
+    color: #fff;
+    background-color: #34bc84!important;
+    border-color: #34bc84!important;
+}
+.el-tabs--bottom .el-tabs__item.is-bottom:nth-child(2), .el-tabs--bottom .el-tabs__item.is-top:nth-child(2), .el-tabs--top .el-tabs__item.is-bottom:nth-child(2), .el-tabs--top .el-tabs__item.is-top:nth-child(2) {
+    padding-left: 20px!important;
+}
+.el-tabs--bottom .el-tabs__item.is-bottom:last-child, .el-tabs--bottom .el-tabs__item.is-top:last-child, .el-tabs--top .el-tabs__item.is-bottom:last-child, .el-tabs--top .el-tabs__item.is-top:last-child {
+    padding-right: 20px!important;
 }

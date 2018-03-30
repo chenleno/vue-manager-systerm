@@ -8,15 +8,19 @@
             <i class="icon iconfont icon-tuichu1" @click="handleCommand('loginout')"></i>
         </div>
         <div class="user-info">
-            <el-dropdown trigger="click" @command="handleCommand">
-                <span class="el-dropdown-link">
+            <span class="el-dropdown-link">
                     <img class="user-logo" src="../../../../static/img/img.jpg">
                     {{username}}
                 </span>
-                <!--<el-dropdown-menu slot="dropdown">-->
-                    <!--<el-dropdown-item command="loginout">退出</el-dropdown-item>-->
-                <!--</el-dropdown-menu>-->
-            </el-dropdown>
+            <!--<el-dropdown trigger="click" @command="handleCommand">-->
+                <!--<span class="el-dropdown-link">-->
+                    <!--<img class="user-logo" src="../../../../static/img/img.jpg">-->
+                    <!--{{username}}-->
+                <!--</span>-->
+                <!--&lt;!&ndash;<el-dropdown-menu slot="dropdown">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<el-dropdown-item command="loginout">退出</el-dropdown-item>&ndash;&gt;-->
+                <!--&lt;!&ndash;</el-dropdown-menu>&ndash;&gt;-->
+            <!--</el-dropdown>-->
         </div>
 
     </div>
