@@ -2,7 +2,7 @@
  * Created by chenqi1 on 2018/3/6.
  */
 module.exports = {
-    api: '/api/udcp-base/base',
+    api: '/api/udcp-base/base/cs/sc',
     response: function (req, res) {
 
         res.send(

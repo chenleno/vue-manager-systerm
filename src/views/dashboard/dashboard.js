@@ -183,7 +183,7 @@ export default {
         getBaseData (){
             let self = this
 
-            csApi.getBaseData.r().then(res => {
+            csApi.getBaseData.r('sc').then(res => {
                 if (res.data.code == '200') {
                     self.dataObj.allData = res.data.data.allData
                     self.dataObj.todayData = res.data.data.todayData

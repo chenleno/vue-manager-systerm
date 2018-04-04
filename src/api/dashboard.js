@@ -5,9 +5,9 @@ import instance from './index';
 const preUrlPath = '/api/udcp-base';
 //获取数据块
 const getBaseData = {
-    p: [`get,${preUrlPath}/base`],
-    r: params => {
-        return instance.get(`${preUrlPath}/base`, {params})
+    p: [`get,${preUrlPath}/base/cs/sc/`],
+    r: (id , params) => {
+        return instance.get(`${preUrlPath}/base/cs/${id}/`, {params})
     }
 };
 //获取top10

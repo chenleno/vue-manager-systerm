@@ -166,30 +166,11 @@ Vue.js的Markdown Editor组件。访问地址：[Vue-SimpleMDE](https://github.c
 
 完成。
 
-### 二、如何切换主题色呢？ ###
+## 权限控制
+参考资料：
+[VUE2.0 用户权限解决方案](https://refined-x.com/2017/11/28/Vue2.0%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/)
 
-第一步：打开 src/main.js 文件，找到引入 element 样式的地方，换成浅绿色主题。
+项目借鉴了该开源项目的权限控制思路，在此基础上增加了权限控制相关的配置
 
-```javascript
-import 'element-ui/lib/theme-default/index.css';    // 默认主题
-// import '../static/css/theme-green/index.css';       // 浅绿色主题
-```
+详细思路及说明参考个人博客[lenoChen's](https://chenleno.github.io/)
 
-第二步：打开 src/App.vue 文件，找到 style 标签引入样式的地方，切换成浅绿色主题。
-
-```javascript
-@import "../static/css/main.css";
-@import "../static/css/color-dark.css";     /*深色主题*/
-/*@import "../static/css/theme-green/color-green.css";   !*浅绿色主题*!*/
-```
-
-第三步：打开 src/components/common/Sidebar.vue 文件，找到 el-menu 标签，把 theme="dark" 去掉即可。
-
-## 项目截图 ##
-### 默认皮肤 ###
-
-![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms1.png)
-
-### 浅绿色皮肤 ###
-
-![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms2.png)

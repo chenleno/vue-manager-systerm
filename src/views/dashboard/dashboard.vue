@@ -13,25 +13,26 @@
                         placement="bottom"
                         trigger="hover"
                         :width='dataWidth'
-                        >
-                        <div class="pover_content" >
+                    >
+                        <div class="pover_content">
                             <p>
                                 <span class='poverTitle'><i class='iconfont icon-yonghuguanli'></i> 泛用户</span>
-                                <span class='poverData' >{{dataObj.todayData.generalUser}} | {{dataObj.allData.generalUser}}</span>
+                                <span class='poverData'>{{dataObj.todayData.generalUser}} | {{dataObj.allData.generalUser}}</span>
                             </p>
                             <p>
                                 <span class='poverTitle'><i class='iconfont icon-yonghuguanli'></i> 普通用户</span>
-                                <span class='poverData' >{{dataObj.todayData.normalUser}} | {{dataObj.allData.normalUser}}</span>
+                                <span class='poverData'>{{dataObj.todayData.normalUser}} | {{dataObj.allData.normalUser}}</span>
                             </p>
                             <p>
                                 <span class='poverTitle'><i class='iconfont icon-huiyuan'></i> 会员</span>
-                                <span class='poverData' >{{dataObj.todayData.vipUser}} | {{dataObj.allData.vipUser}}</span>
+                                <span
+                                    class='poverData'>{{dataObj.todayData.vipUser}} | {{dataObj.allData.vipUser}}</span>
                             </p>
                         </div>
                     </el-popover>
 
-                    <el-card class="box-card" v-popover:popover1 >
-                        <div  class="text item dataCard">
+                    <el-card class="box-card" v-popover:popover1>
+                        <div class="text item dataCard">
                             <div class="square_wrap">
                                 <div class="icon_square square square_green">
                                     <p class='iconP '><i class='iconfont icon-yonghuguanli font_green'></i></p>
@@ -50,14 +51,13 @@
                                     <p>全部</p>
                                 </div>
                             </div>
-                            <div class="pic_square square" >
+                            <div class="pic_square square">
                                 <div class="pic_line pic_green" v-for='(o , index) in 8' :index='index'>
 
                                 </div>
                             </div>
                         </div>
                     </el-card>
-
 
 
                 </el-col>
@@ -68,21 +68,21 @@
                         trigger="hover"
                         :width='dataWidth'
                     >
-                        <div class="pover_content" >
+                        <div class="pover_content">
                             <p>
                                 <span class='poverTitle'><i class='iconfont icon-dingdan'></i> 订单数量</span>
-                                <span class='poverData' >{{dataObj.todayData.orderCount}} | {{dataObj.allData.orderCount}}</span>
+                                <span class='poverData'>{{dataObj.todayData.orderCount}} | {{dataObj.allData.orderCount}}</span>
                             </p>
                             <p>
                                 <span class='poverTitle'><i class='iconfont icon-jifendingdan'></i> 订单金额</span>
-                                <span class='poverData' >{{dataObj.todayData.orderTotalAmount}} | {{dataObj.allData.orderTotalAmount}}</span>
+                                <span class='poverData'>{{dataObj.todayData.orderTotalAmount}} | {{dataObj.allData.orderTotalAmount}}</span>
                             </p>
 
                         </div>
                     </el-popover>
 
-                    <el-card class="box-card" v-popover:popover2 >
-                        <div  class="text item dataCard">
+                    <el-card class="box-card" v-popover:popover2>
+                        <div class="text item dataCard">
                             <div class="square_wrap">
                                 <div class="icon_square square square_blue">
                                     <p class='iconP '><i class='iconfont icon-dingdan font_blue'></i></p>
@@ -104,7 +104,7 @@
                                 <!--<p><b>{{dataObj.todayData.orderCount}}</b>&nbsp;&nbsp;/&nbsp;&nbsp;{{dataObj.allData.orderCount}}</p>-->
                                 <!--<p>新增&nbsp;&nbsp;/&nbsp;&nbsp;全部</p>-->
                             </div>
-                            <div class="pic_square square" >
+                            <div class="pic_square square">
                                 <div class="pic_line pic_blue" v-for='(o , index) in 8' :index='index'>
 
                                 </div>
@@ -119,15 +119,15 @@
                         trigger="hover"
                         :width='dataWidth'
                     >
-                        <div class="pover_content" >
+                        <div class="pover_content">
                             <p>
                                 <span class='poverTitle'><i class='iconfont icon-web-icon-'></i> 终端数量</span>
-                                <span class='poverData' >{{dataObj.todayData.device}} | {{dataObj.allData.device}}</span>
+                                <span class='poverData'>{{dataObj.todayData.device}} | {{dataObj.allData.device}}</span>
                             </p>
                         </div>
                     </el-popover>
-                    <el-card class="box-card" v-popover:popover3 >
-                        <div  class="text item dataCard">
+                    <el-card class="box-card" v-popover:popover3>
+                        <div class="text item dataCard">
                             <div class="square_wrap">
                                 <div class="icon_square square square_red">
                                     <p class='iconP'><i class='iconfont icon-web-icon- font_red'></i></p>
@@ -149,7 +149,7 @@
                                 <!--<p><b>{{dataObj.todayData.device}}</b>&nbsp;&nbsp;/&nbsp;&nbsp;{{dataObj.allData.device}}</p>-->
                                 <!--<p>新增&nbsp;&nbsp;/&nbsp;&nbsp;全部</p>-->
                             </div>
-                            <div class="pic_square square" >
+                            <div class="pic_square square">
                                 <div class="pic_line pic_red" v-for='(o , index) in 8' :index='index'>
 
                                 </div>
@@ -187,7 +187,7 @@
                                 :timeSlice='lineObj.userLineDate'
                                 style='display: inline-block;'
                                 height='380px'
-                                >
+                            >
                             </a-line>
                         </div>
                     </el-card>
@@ -258,7 +258,8 @@
                         <div v-if='rankObj.shopData.length != 0' class='top10'>
                             <div v-for="(data, index) in rankObj.shopData" :key="index" class="text item">
                                 <p>
-                                    <span class='itemName'>{{ index+1 + '.'}}&nbsp;&nbsp;<span style='font-size: 12px;color: #818785;'>{{ data.goodsName }}</span></span>
+                                    <span class='itemName'>{{ index+1 + '.'}}&nbsp;&nbsp;<span
+                                        style='font-size: 12px;color: #818785;'>{{ data.goodsName }}</span></span>
                                     <span class='itemPrice'>￥{{data.goodsPrice}}</span>
                                     <span class='itemNum'>{{data.goodsCount}}件</span>
                                 </p>
@@ -287,10 +288,11 @@
 
                         </div>
 
-                        <div v-if='rankObj.topVEM.length != 0' class='top10' >
-                            <div v-for="(data, index) in rankObj.topVEM" :key="index" class="text item" >
+                        <div v-if='rankObj.topVEM.length != 0' class='top10'>
+                            <div v-for="(data, index) in rankObj.topVEM" :key="index" class="text item">
                                 <p>
-                                    <span class='itemName'>{{ index+1 + '.'}}&nbsp;&nbsp;<span style='font-size: 12px;color: #818785;'>{{ data.deviceId }} （{{data.city + data.district}}）</span></span>
+                                    <span class='itemName'>{{ index+1 + '.'}}&nbsp;&nbsp;<span
+                                        style='font-size: 12px;color: #818785;'>{{ data.deviceId }} （{{data.city + data.district}}）</span></span>
                                     <span class='itemPrice'>￥{{data.saleMoney}}</span>
                                     <span class='itemNum'>{{data.saleCount}}件</span>
                                 </p>
@@ -320,10 +322,11 @@
                             </el-radio-group>
                         </div>
 
-                        <div v-if='rankObj.VEMData.length != 0' class='top10' >
+                        <div v-if='rankObj.VEMData.length != 0' class='top10'>
                             <div v-for="(data, index) in rankObj.VEMData" :key="index" class="text item">
                                 <p>
-                                    <span class='itemName'>{{ index+1 + '.'}}&nbsp;&nbsp;<span style='font-size: 12px;color: #818785;'>{{ data.goodsName }}</span></span>
+                                    <span class='itemName'>{{ index+1 + '.'}}&nbsp;&nbsp;<span
+                                        style='font-size: 12px;color: #818785;'>{{ data.goodsName }}</span></span>
                                     <span class='itemPrice'>￥{{data.goodsPrice}}</span>
                                     <span class='itemNum'>{{data.goodsCount}}件</span>
                                 </p>
@@ -331,7 +334,7 @@
                         </div>
 
                         <div v-else>
-                            <p class='noData' >暂无数据</p>
+                            <p class='noData'>暂无数据</p>
                         </div>
 
 
@@ -443,7 +446,7 @@
                                             prop="percent"
                                             label="占比">
                                         </el-table-column>
-                                </el-table>
+                                    </el-table>
 
                                 </el-scrollbar>
                             </div>

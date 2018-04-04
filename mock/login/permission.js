@@ -6,12 +6,13 @@ module.exports = {
     api: '/access',
     response: function (req, res) {
         res.send(
-            {"code":'200',"message":"code is ok","data": [
+            {
+                "code": '200', "message": "code is ok", "data": [
                 {
                     "id": "cba62955646c4a489e2ca1442c786270",
                     "name": "获取基础数据",
                     "summary": null,
-                    "url": "/base",
+                    "url": "/base/cs/sc/",
                     "method": "GET"
                 },
                 {
@@ -28,7 +29,8 @@ module.exports = {
                     "url": "/signin",
                     "method": "GET"
                 }
-            ]}
+            ]
+            }
         )
     }
 }
