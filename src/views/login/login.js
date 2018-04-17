@@ -44,7 +44,6 @@ export default {
                     //self.$axios.post('/hello' , this.ruleForm).then(res => {
                     //    if(res.data.success){
                     //        self.$store.commit('ms_username',res.data.data.userName)
-                    //        //localStorage.setItem('ms_username',res.data.data.userName);
                     //        self.$router.push('/home');
                     //    }else {
                     //        alert('error login')

@@ -14,11 +14,12 @@ import echarts from 'echarts'
 
 Vue.use(ElementUI);
 Vue.use(Vuex);
+
 Vue.prototype.$axios = axios;
 Vue.prototype.$echarts = echarts
 
 
-//权限指令
+//拓展权限指令
 Vue.directive('has' , {
     bind : function(el , binding , vnode){
         if(!Vue.prototype.$_has(binding.value)){

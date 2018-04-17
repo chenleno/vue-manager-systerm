@@ -9,7 +9,7 @@ export default {
     },
     computed:{
         username(){
-//                let username = localStorage.getItem('ms_username');
+
             let username = this.$store.state.ms_username
             return username ? username : this.name;
         }
@@ -18,6 +18,7 @@ export default {
         handleCommand(command) {
             if(command == 'loginout'){
                 sessionStorage.removeItem('ms_username')
+                this.$store.state.ms_username = ''
                 this.$router.push('/login');
             }
         }

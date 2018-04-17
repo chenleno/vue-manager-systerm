@@ -7,7 +7,7 @@ const preUrlPath = '/api/udcp-base';
 const getBaseData = {
     p: [`get,${preUrlPath}/base/cs/sc/`],
     r: (id , params) => {
-        return instance.get(`${preUrlPath}/base/cs/${id}/`, {params})
+        return instance.get(`${preUrlPath}/base/${id}/cs`, {params})
     }
 };
 //获取top10

@@ -29,6 +29,7 @@
         },
         methods: {
 
+//            获取权限数据
             signIn: function () {
                 let vm = this
                 instance.get('/access').then(res => {
@@ -80,6 +81,7 @@
                 }
                 return resourcePermission;
             },
+            
             //    设置axios拦截器，判断权限
             setInterceptor: function (resourcePermission) {
                 let vm = this;

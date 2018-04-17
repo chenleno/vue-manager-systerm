@@ -11,6 +11,10 @@ const routes = [
         redirect: '/login'
     },
     {
+        path: '/login',
+        component: resolve => require(['../views/login/Login.vue'], resolve)
+    },
+    {
         path: '/home',
         component: resolve => require(['../components/common/Home/Home.vue'], resolve),
         meta:{
@@ -20,19 +24,6 @@ const routes = [
             {
                 path: '/',
                 component: resolve => require(['../views/dashboard/dashboard.vue'], resolve)
-            },
-
-            //{
-            //    path : '/',
-            //    component : resolve => require(['../components/dashboard/map/map.vue'],resolve)
-            //},
-            {
-                path: '/basetable',
-                component: resolve => require(['../components/page/BaseTable.vue'], resolve)
-            },
-            {
-                path: '/vuetable',
-                component: resolve => require(['../components/page/VueTable.vue'], resolve)     // vue-datasource组件
             },
             {
                 path: '/userManager',
@@ -45,26 +36,8 @@ const routes = [
                 path: '/userInfo',
                 component: resolve => require(['../views/userManager/userInfo/userInfo.vue'],resolve)
             }
-
-            //{
-            //    path: '/baseform',
-            //    component: resolve => require(['../components/page/BaseForm.vue'], resolve)
-            //},
-            //{
-            //    path: '/upload',
-            //    component: resolve => require(['../components/page/Upload.vue'], resolve)       // Vue-Core-Image-Upload组件
-            //},
-            //{
-            //    path: '/drag',
-            //    component: resolve => require(['../components/page/DragList.vue'], resolve)    // 拖拽列表组件
-            //},
         ]
-    },
-    {
-        path: '/login',
-        component: resolve => require(['../views/login/Login.vue'], resolve)
     }
-
 ]
 
 
